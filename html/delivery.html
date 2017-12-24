@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <link rel="stylesheet" href="../style.css" type="text/css" />
+        <title>  </title>
+    </head> 
+    <body> 
+        <h1> Choose your preferred delivery timing! </h1>
+        <p id="orderInfo"> Your order can be delivered by 25th December 2017 at earliest.</p>
+        <form> 
+            <fieldset name="deliveryDay">
+                <legend> Delivery Day</legend>
+                <ul name="deliveryDay"/>
+            </fieldset>        
+            <fieldset name="deliveryTime">
+                <legend> Delivery Timeslots </legend>
+                <ul name="deliveryTime"/>
+            </fieldset>
+
+        </form>
+        <button id="reminderPage" onclick="location.href='reminder.html';"> Back </button>
+        <button id="ordersPage" onclick="location.href='orders.html';"> View your orders </button>
+        <script src="../scripts/delivery.js"></script>
+    </body>
+</html>
