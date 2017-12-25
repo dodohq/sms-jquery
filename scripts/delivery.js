@@ -54,15 +54,7 @@ $(document).ready(function() {
         } else {
             alert("Make sure you've selected a day and a timeslot!");
         }
-
-       
     })
-
-    // $("form").validate({
-    //     rules: {
-    //         delivery
-    //     }
-    // })
 });
 
 function handleSubmit() {

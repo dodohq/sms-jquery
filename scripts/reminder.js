@@ -1,9 +1,14 @@
 const TIMESLOTS = [
-    "1 day before",
-    "2 days before",
-    "3 days before",
-    "5 days before",
-    "1 week before",
+    "9am-11am",
+    "10am-12pm",
+    "11am-1pm",
+    "12pm-2pm",
+    "1pm-3pm",
+    "2pm-4pm",
+    "3pm-5pm",
+    "4pm-6pm",
+    "5pm-7pm",
+    "6pm-8pm",
 ];
 
 $(document).ready(function() { 
@@ -15,7 +20,10 @@ $(document).ready(function() {
         </li>`
         )
     });
-    $("fieldset").append('<button type="submit">Submit</button>');
+    $("#serviceProvider").change(() => {
+        $("#sendTime").css("display", "block");
+    });
+    $("form").append('<button type="submit">Submit</button>');
     $("form").submit((e) => {
         e.preventDefault();
         if ($("input[name='reminderTime']:checked").val()) {
@@ -31,9 +39,9 @@ function handleSubmit() {
     console.log(form);
     var data = new FormData(form);
     console.log(data.values());
-    var output = "";
+    var output = [];
     for (const entry of data) {
-      output = entry[1];
+      output.push(entry[1]);
     };
-    alert(`You will receive the delivery notification ${output} your package arrives.`)
+    alert(`Customers will receive the delivery notification at ${output[1]} the day before delivery.`)
 };

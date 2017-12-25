@@ -1,8 +1,85 @@
 body {
     text-align: center;
+    font-family: 'Open Sans', sans-serif, Times;
+}
+form { 
+    max-width: 500px;
+    padding: 10px 20px;
+    background: #f4f7f8;
+    margin: 10px auto;
+    padding: 20px;
+    background: #f4f7f8;
+    border-radius: 8px;
+}
+fieldset {
+    border: none;
+    margin: 20px;
+}
+#header {
+    display: block;
+}
+#info {
+    background-color: #FABE58;
+    color: white;
+    padding: 1em;
+}
+#logo {
+    max-width: 10%;
+    height:auto;
+    width: auto;
+    padding-bottom: 1em;
+}
+.serviceProviderLogo {
+    max-width: 40%;
+    vertical-align: middle;
+}
+#serviceProvider label {
+    margin: 1em;
+}
+.number {
+    background: #FABE58;
+    color: #fff;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    font-size: 0.8em;
+    margin-right: 4px;
+    line-height: 30px;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+    border-radius: 15px 15px 15px 0px;
+}
+legend {
+    font-size: 1.3em;
+    font-weight: 700; 
+    padding-bottom: 0.6em;
 }
 ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
+}
+button {
+    position: relative;
+    display: block;
+    padding: 19px 39px 18px 39px;
+    color: #FFF;
+    margin: 0 auto;
+    background: #FABE58;
+    font-size: 18px;
+    text-align: center;
+    font-style: normal;
+    width: 100%;
+    border: 1px solid #EB9532;
+    border-width: 1px 1px 3px;
+    margin-bottom: 10px;
+}
+button:hover {
+    background: #EB9532;
+}
+#navigation {
+    display: flex;
+}
+#orders {
+    padding: 20px;
 }
