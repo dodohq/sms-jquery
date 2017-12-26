@@ -1,32 +1,23 @@
+
 const TIMESLOTS = [
-    "9am-11am",
-    "10am-12pm",
-    "11am-1pm",
-    "12pm-2pm",
-    "1pm-3pm",
-    "2pm-4pm",
-    "3pm-5pm",
-    "4pm-6pm",
-    "5pm-7pm",
-    "6pm-8pm",
-];
+    "09:00", "10:00", "11:00", "12:00", "13:00", "14:00",
+    "15:00", "16:00", "17:00", "18:00", "19:00", "20:00",
+]
 
 $(document).ready(function() { 
     TIMESLOTS.forEach((i) => {
-        $("ul").append(`
-        <li>
-            <input type='radio' name='reminderTime' id='${i}' value='${i}'>
-            <label for='${i}'> ${i} </label>
-        </li>`
-        )
+        $("#startTime").append(`
+        <option value='${i}'> ${i} </option>`);
+        $("#endTime").append(`
+        <option value='${i}'> ${i} </option>`);
     });
     $("#serviceProvider").change(() => {
-        $("#sendTime").css("display", "block");
+        $("#timeSlots").css("display", "block");
     });
     $("form").append('<button type="submit">Submit</button>');
     $("form").submit((e) => {
         e.preventDefault();
-        if ($("input[name='reminderTime']:checked").val()) {
+        if ($("#timeSlots").val()) {
             handleSubmit();
         } else {
             alert("Make sure you've selected a timeslot!");
@@ -36,12 +27,23 @@ $(document).ready(function() {
 
 function handleSubmit() {
     var form = $("form")[0];
-    console.log(form);
+    var result = {
+        start_time: $("#startTime").val(), 
+        end_time: $("#endTime").val(),
+        provider_id: $("input[name='serviceProvider']:checked").val(),
+    }
     var data = new FormData(form);
-    console.log(data.values());
     var output = [];
     for (const entry of data) {
       output.push(entry[1]);
     };
-    alert(`Customers will receive the delivery notification at ${output[1]} the day before delivery.`)
+    $.ajax({
+        url: "localhost:8080/api/time_slot", 
+        type: "POST", 
+        data: result, 
+        success: function(s) {
+            console.log(s);
+        }
+    })
+    // alert(`Customers will receive the delivery notification at ${output[1]} the day before delivery.`)
 };
