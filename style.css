@@ -77,9 +77,21 @@ button {
 button:hover {
     background: #EB9532;
 }
+button:checked {
+    background: #EB9532;
+}
 #navigation {
     display: flex;
 }
 #orders {
     padding: 20px;
+}
+ul#timeSlots {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    padding-bottom: 1em;
+}
+select {
+    margin-bottom: 0.8em;
 }

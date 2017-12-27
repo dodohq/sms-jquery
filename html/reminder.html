@@ -4,43 +4,17 @@
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="../scripts/reminder.js"></script>
         <link rel="stylesheet" href="../style.css" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-        <title> Reminder Page </title>
+        <title> Reminders </title>
     </head> 
     <body> 
         <div id="header"> 
                 <img id="logo" src="../images/logo.png" alt="Dodo logo"/>
         </div>
-        <h1> Welcome to our SMS delivery service! </h1>
-        <div id="info">
-            <h4> Create your available timeslots you want to open up! </h4>
-            <p id="orderInfo"> eg. If you only want to deliver between 9:00-12:00 and 16:00-20:00, 
-                simply create 2 timeslots with the corresponding start and end times. 
-                Make sure your timeslots don't overlap! </p>
-     </div>  
-        <form> 
-            <fieldset id="serviceProvider">
-                <legend> Which service provider are you? </legend>
-                <label>
-                    <input type="radio" name="serviceProvider" id="aramex" value=1>
-                    <img class="serviceProviderLogo" for="aramex" src="../images/aramex.png" alt="aramex"/>
-                </label>
-                <label>
-                    <input type="radio" name="serviceProvider" id="dhl" value=2>
-                    <img class="serviceProviderLogo" for="dhl" src="../images/dhl.png" alt="dhl"/>
-                </label>
-            </fieldset>
-            <fieldset id="timeSlots">
-                <label>  Start Time
-                    <select id="startTime"></select>
-                </label>
-                <label>  End Time
-                    <select id="endTime"></select>
-                </label>
-            </fieldset>
+        <h1> Set reminder timing </h1>
+        <form>
+            <p> Choose the time you want to send out the delivery reminders </p>
+            <select id="timeSlots"></select>
+            <button type="submit">Submit</button>
         </form>
-        <div id="navigation">
-            <button id="deliveryPage" onclick="location.href='delivery.html';"> Next </button>
-        </div>
     </body>
 </html>
