@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="scripts/orders.js"></script>
+        <link rel="stylesheet" href="style.css" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <title> Orders </title>
+    </head> 
+    <body>  
+        <div id="header"> 
+                <img id="logo" src="images/logo.png" alt="Dodo logo"/>
+        </div>
+        <h1> These are your pending orders </h1>
+        <table id="orders" frame="box">
+            <thead>
+                <tr>
+                    <th>Customer</th>
+                    <th>Contact</th>
+                    <th>Delivery Date</th>
+                </tr>
+            </thead>
+            <tbody/>
+        </table>
+        <div id="fileUpload">
+                <p> Upload your orders in an excel file </p>
+                 <input type="file" accept=".csv" id="file">
+                 <input type="submit" id="submitFile">
+             </div>
+        <div class="btn">
+            <button id="timeslotsPage" onclick="location.href='timeslots.html';"> Edit your timeslots </button> 
+            <button id="reminderPage" onclick="location.href='reminder.html';"> Set the reminder time </button> 
+        </div>
+    </body>
+</html>

@@ -1,3 +1,5 @@
+const API_URL = process.env.API_URL
+
 const TIMESLOTS = [
     "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00",
     "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00",
@@ -29,11 +31,19 @@ $(document).ready(function() {
             alert("Please select the type of provider you are!");
         }
     });
+    $("#ordersPage").click(() => {
+        var provider_id = $("input[name='serviceProvider']:checked").val();
+        if (provider_id) {
+            window.location = 'orders.html?provider_id=' + provider_id;
+        } else {
+            alert("Please select the type of provider you are!");
+        }
+    });
 });
 
 function getProviders() {
     $.ajax({
-        url: "http://localhost:8080/api/provider",
+        url: `${API_URL}api/provider`,
         type: "GET", 
         crossDomain: true,
     })
@@ -42,9 +52,8 @@ function getProviders() {
         for (var i=0; i<providers.length; i++) {
             var title = providers[i].title;
             var id = providers[i].id;
-            console.log(title, id);
             $("#serviceProvider").append(`
-                <label class="btn serviceProvider"> 
+                <label class="serviceProvider"> 
                     <input type="radio" name="serviceProvider" value=${id}>
                     ${title}
                 </label>
@@ -65,7 +74,7 @@ function handleSubmit() {
         });
         console.log(result);
         $.ajax({
-            url: "http://localhost:8080/api/time_slot", 
+            url: `${API_URL}api/time_slot`, 
             type: "POST", 
             data: result, 
             crossDomain: true,
@@ -92,7 +101,7 @@ function handleSubmit() {
 function handleExistingTimeslots(provider_id) {
     $("#timeSlots").empty();
     $.ajax({
-        url: "http://localhost:8080/api/provider/" + provider_id, 
+        url: `${API_URL}/api/provider/` + provider_id, 
         type: "GET" 
     }).done((response) => {
         var times = [];

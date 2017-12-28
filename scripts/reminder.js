@@ -1,3 +1,4 @@
+const API_URL = process.env.API_URL
 
 const TIMESLOTS = [
     "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00",
@@ -5,6 +6,7 @@ const TIMESLOTS = [
 ]
 
 $(document).ready(function() { 
+    var provider_id = getUrlParam('provider_id');
     TIMESLOTS.forEach((i) => {
         $("#timeSlots").append(`
         <option value='${i}'> ${i} </option>`);
@@ -13,17 +15,18 @@ $(document).ready(function() {
         e.preventDefault();
         handleSubmit();   
     });
+    $("#ordersPage").click(() => {
+        window.location = 'orders.html?provider_id=' + provider_id;
+    });
 });
 
 function handleSubmit() {
-    var provider_id = getUrlParam('provider_id');
-    console.log(provider_id);
     var result = $.param({
         reminder_time: $("#timeSlots").val(),
     });
     if (result) {
         $.ajax({
-            url: `http://localhost:8080/api/provider/${provider_id}/set_reminder`, 
+            url: `${API_URL}api/provider/${provider_id}/set_reminder`, 
             type: "PUT", 
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -32,7 +35,7 @@ function handleSubmit() {
             crossDomain: true,
         })
         .done((data) => {
-            alert(`You have successfully set the reminder time to ${result.reminder_time}!`);
+            alert(`You have successfully set the reminder time!`);
         })
         .fail((err) => {
             console.log(err);
