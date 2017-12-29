@@ -2,3 +2,4 @@ build.sh
 dist
 node_modules
 .vscode
+.cache
