@@ -11,22 +11,37 @@ $(document).ready(function() {
         $("#timeSlots").append(`
         <option value='${i}'> ${i} </option>`);
     });
+    getReminderTime(provider_id);
+
     $("form").submit((e) => {
         e.preventDefault();
-        handleSubmit();   
+        handleSubmit(provider_id);   
     });
     $("#ordersPage").click(() => {
         window.location = 'orders.html?provider_id=' + provider_id;
     });
+    $("#indexPage").click(() => {
+        window.location = 'index.html';
+    });
 });
-
-function handleSubmit() {
+function getReminderTime(provider_id) {
+    $.ajax({
+        url: `${API_URL}/api/provider/${provider_id}`, 
+        type: "GET", 
+        crossDomain: true,
+    })
+    .done((response) => {
+        var time = response.reminder_time.match(/\d{2}:00(?=:00\+0\d:00)/);
+        $("#currentTime").text(`You currently have the reminder time set to ${time}`);
+    })
+}
+function handleSubmit(provider_id) {
     var result = $.param({
         reminder_time: $("#timeSlots").val(),
     });
     if (result) {
         $.ajax({
-            url: `${API_URL}api/provider/${provider_id}/set_reminder`, 
+            url: `${API_URL}/api/provider/${provider_id}/set_reminder`, 
             type: "PUT", 
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'

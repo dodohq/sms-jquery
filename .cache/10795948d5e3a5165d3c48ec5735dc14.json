@@ -1,1 +1,0 @@
-{"dependencies":[],"generated":{"js":"$(document).ready(function(){$(\"#timeslotsPage\").click(t=>{t.preventDefault(),window.location=\"timeslots.html\"})});"},"hash":"2b7d765037e516be789308f1e3919438"}

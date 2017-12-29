@@ -85,8 +85,42 @@ ul#timeSlots {
     align-items: center;
     padding-bottom: 1em;
 }
+ul#timeSlots > li {
+    padding: 5px 30px 5px 50px; 
+    border: 1px dotted orange;
+}
+ul#timeSlots >li:first-child {
+    border-top: 1px dotted orange;
+}
+#selectSlots > label {
+    font-size: smaller;
+    font-weight: bold;
+    margin: 1em;
+}
+#selectSlots > p {
+    font-weight: bold;
+}
 select {
+    background-color: white;
+    border: 1px solid orange;
+    width: 80px;
+    font-size: smaller;
+    font-weight: bold;
+    color: orange;
     margin-bottom: 0.8em;
+}
+.delete {
+    margin-left: 5em;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    background: #C0392B;
+}
+#currentTime {
+    font-size: smaller;
+    font-weight: bold;
+    padding-bottom: 2px;
+    border-bottom: 1px dotted orange;
 }
 #fileUpload {
     display: inline-block;
